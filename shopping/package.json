@@ -1,10 +1,11 @@
 {
   "name": "shopping",
   "version": "1.0.0",
-  "description": "",
+  "description": "Microservicio de carritos, ordenes y compras",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "node --watch index.js"
   },
   "keywords": [],
   "author": "",

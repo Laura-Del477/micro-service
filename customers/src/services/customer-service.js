@@ -50,6 +50,7 @@ class CustomerService {
             const address = await this.repository.AddNewAddress(_id, { street, postalCode, city, country });
             return FormateData(address);
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }
@@ -59,6 +60,7 @@ class CustomerService {
             const profile = await this.repository.GetProfile(_id);
             return FormateData(profile);
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }
@@ -68,6 +70,7 @@ class CustomerService {
             const profile = await this.repository.GetProfile(_id);
             return FormateData({ cart: profile.cart, wishlist: profile.wishlist, orders: profile.orders });
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }
@@ -77,6 +80,7 @@ class CustomerService {
             const wishlist = await this.repository.GetWishList(_id);
             return FormateData(wishlist);
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }
@@ -86,6 +90,7 @@ class CustomerService {
             const wishlist = await this.repository.AddToWishlist(_id, product);
             return FormateData(wishlist);
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }
@@ -95,6 +100,7 @@ class CustomerService {
             const wishlist = await this.repository.RemoveFromWishlist(_id, productId);
             return FormateData(wishlist);
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }
@@ -104,6 +110,7 @@ class CustomerService {
             const cart = await this.repository.AddToCart(_id, product, qty);
             return FormateData(cart);
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }
@@ -113,6 +120,7 @@ class CustomerService {
             const cart = await this.repository.RemoveFromCart(_id, productId);
             return FormateData(cart);
         } catch (err) {
+            if (err instanceof APIError) throw err;
             throw new APIError('Data Not Found', 404, err.message);
         }
     }

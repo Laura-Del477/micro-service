@@ -45,7 +45,7 @@ class CustomerRepository {
         const productId = product._id.toString();
 
         if (!customer.wishlist.some((item) => item._id === productId)) {
-            customer.wishlist.push({ ...product.toObject(), _id: productId });
+            customer.wishlist.push({ ...product, _id: productId });
             await customer.save();
         }
 
@@ -68,7 +68,7 @@ class CustomerRepository {
         if (existingItem) {
             existingItem.unit = qty;
         } else {
-            customer.cart.push({ product: { ...product.toObject(), _id: productId }, unit: qty });
+            customer.cart.push({ product: { ...product, _id: productId }, unit: qty });
         }
 
         await customer.save();
